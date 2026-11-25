@@ -83,21 +83,45 @@
       <div class="metric-detail" id="batt-detail">—</div>
     </div>
   </div>
-  <div class="card" id="metrics-detail">
-    <div class="card-head"><div class="card-title"><i data-lucide="list" class="ic"></i><span data-i18n="metrics.details">Details</span></div><div></div></div>
-    <div class="stat-group four">
-      <div class="stat"><div class="lbl" data-i18n="metrics.cpuCores">CPU cores</div><div class="val" id="m-cpu-cores">—</div></div>
-      <div class="stat"><div class="lbl" data-i18n="metrics.memoryDetail">Memory</div><div class="val" id="m-mem-detail">—</div></div>
-      <div class="stat"><div class="lbl" data-i18n="metrics.diskUsage">Disk usage</div><div class="val" id="m-disk-pct">—</div></div>
-      <div class="stat"><div class="lbl" data-i18n="metrics.charging">Charging</div><div class="val" id="m-charging">—</div></div>
+  <div class="card detail-card" id="metrics-detail">
+    <div class="card-head">
+      <div class="card-title"><i data-lucide="list" class="ic"></i><span data-i18n="metrics.details">Details</span></div>
     </div>
-    <div class="stat-group four">
-      <div class="stat"><div class="lbl" data-i18n="metrics.upload">Upload</div><div class="val" id="m-up">—</div></div>
-      <div class="stat"><div class="lbl" data-i18n="metrics.download">Download</div><div class="val" id="m-down">—</div></div>
-      <div class="stat"><div class="lbl" data-i18n="metrics.loadAvgLabel">Load avg</div><div class="val" id="m-load">—</div></div>
-      <div class="stat"><div class="lbl" data-i18n="metrics.uptime">Uptime</div><div class="val" id="m-uptime">—</div></div>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.cpuCores">CPU cores</div>
+        <div class="detail-value" id="m-cpu-cores">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.memoryDetail">Memory</div>
+        <div class="detail-value detail-value--long" id="m-mem-detail">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.diskUsage">Disk usage</div>
+        <div class="detail-value" id="m-disk-pct">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.charging">Charging</div>
+        <div class="detail-value" id="m-charging">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.upload">Upload</div>
+        <div class="detail-value" id="m-up">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.download">Download</div>
+        <div class="detail-value" id="m-down">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.loadAvgLabel">Load avg</div>
+        <div class="detail-value" id="m-load">—</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-i18n="metrics.uptime">Uptime</div>
+        <div class="detail-value" id="m-uptime">—</div>
+      </div>
     </div>
-    <p class="note" data-i18n="metrics.telemetryPublished">Telemetry is published every second to paired devices.</p>
+    <p class="detail-note" data-i18n="metrics.telemetryPublished">Telemetry is published every second to paired devices.</p>
   </div>
   <div id="metrics-empty" class="empty-state hidden">
     <i data-lucide="wifi-off" class="ic"></i>

@@ -367,6 +367,44 @@
     @apply text-xs text-muted font-mono;
   }
 
+  /* --- Details Card --- */
+  .detail-card {
+    @apply flex flex-col gap-3 p-4 bg-surface border border-border rounded-lg shadow-md mt-4;
+  }
+
+  .detail-grid {
+    @apply grid gap-3;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .detail-item {
+    @apply flex flex-col gap-1 p-2.5 bg-surface-hover border border-border rounded-md;
+    transition: all var(--transition);
+  }
+
+  .detail-item:hover {
+    @apply border-border-hover bg-surface;
+  }
+
+  .detail-label {
+    @apply text-[10px] font-semibold text-muted uppercase tracking-[0.4px] leading-[1.4];
+  }
+
+  .detail-value {
+    @apply text-base font-semibold text-text tabular-nums leading-tight truncate;
+  }
+
+  .detail-value--long {
+    @apply text-sm;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .detail-note {
+    @apply mt-1 text-[11px] text-muted leading-normal text-center;
+  }
+
   /* --- Dialog / Toast --- */
   .dialog-backdrop {
     @apply fixed inset-0 flex items-center justify-center bg-black/45 backdrop-blur-sm z-100;
