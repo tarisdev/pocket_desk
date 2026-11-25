@@ -18,7 +18,7 @@ import {
   setupThemeButtons,
 } from '@screens/settings';
 import { i18n, init as initI18n, t, formatTime } from '@i18n/index';
-import type { DesktopAPI } from './desktop';
+import type { DesktopAPI } from '@renderer/desktop';
 
 interface ScreenModule {
   render?: () => void;

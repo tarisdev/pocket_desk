@@ -20,6 +20,7 @@
       "@navigator": ["./src/navigator/index"],
       "@navigator/*": ["./src/navigator/*"],
       "@hooks": ["./src/hooks"],
+      "@hooks/*": ["./src/hooks/*"],
       "@i18n": ["./src/i18n/index"]
     }
   },

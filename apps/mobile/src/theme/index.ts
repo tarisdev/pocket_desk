@@ -6,5 +6,5 @@ export {
   useThemeToggle,
   useThemeSet,
   useColors,
-} from '../design/theme';
-export type { ColorScheme as ThemeName } from '../design/tokens';
+} from '@design/theme';
+export type { ColorScheme as ThemeName } from '@design/tokens';

@@ -1,5 +1,5 @@
-import type { Status } from '../state/types';
-import { parseTelemetryPayload } from '../telemetry';
+import type { Status } from '@context/state/types';
+import { parseTelemetryPayload } from '@context/telemetry';
 
 interface WebSocketCallbacks {
   onStatusChange: (status: Status) => void;

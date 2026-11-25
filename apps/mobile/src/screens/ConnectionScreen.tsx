@@ -30,7 +30,7 @@ import {
 } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomNavVisibility } from '@navigator/BottomNavVisibility';
-import { useDebouncePress } from '../hooks/useDebouncePress';
+import { useDebouncePress } from '@hooks/useDebouncePress';
 
 export function ConnectionScreen() {
   const colors = useColors();

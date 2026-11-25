@@ -12,16 +12,16 @@ import { useColors } from '@theme';
 import Animated from 'react-native-reanimated';
 import { useBottomNavVisibility } from '@navigator/BottomNavVisibility';
 import { useTranslation } from 'react-i18next';
-import { useDebouncePress } from '../hooks/useDebouncePress';
+import { useDebouncePress } from '@hooks/useDebouncePress';
 import { Spacing, Layout, Animation } from '@design/tokens';
 import { useStaggeredFadeIn } from '@design/animations';
 import { useApp } from '@context/AppContext';
 import { ErrorBoundary, ClockWidget } from '@components';
 
-import { TopBar } from './dashboard/TopBar';
-import { MetricsGrid } from './dashboard/MetricsGrid';
-import { ConnectionCard } from './dashboard/ConnectionCard';
-import { StreamDeckSection } from './dashboard/StreamDeckSection';
+import { TopBar } from '@screens/dashboard/TopBar';
+import { MetricsGrid } from '@screens/dashboard/MetricsGrid';
+import { ConnectionCard } from '@screens/dashboard/ConnectionCard';
+import { StreamDeckSection } from '@screens/dashboard/StreamDeckSection';
 
 type DashboardNavigation = NavigationProp<{
   Root: undefined;

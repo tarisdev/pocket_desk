@@ -2,10 +2,10 @@ import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { registerRootComponent } from 'expo';
-import { ThemeProvider } from './src/theme';
-import { AppProvider } from './src/context/AppContext';
-import { AppNavigator } from './src/navigator/AppNavigator';
-import './src/i18n';
+import { ThemeProvider } from '@theme';
+import { AppProvider } from '@context/AppContext';
+import { AppNavigator } from '@navigator/AppNavigator';
+import '@i18n';
 
 const RNErrorUtils = (
   globalThis as unknown as {

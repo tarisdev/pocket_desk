@@ -1,4 +1,4 @@
-import type { TelemetryData } from '../state/types';
+import type { TelemetryData } from '@context/state/types';
 
 export interface ParsedTelemetry {
   cpu: number | null;
