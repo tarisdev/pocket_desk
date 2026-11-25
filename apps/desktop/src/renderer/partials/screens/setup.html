@@ -1,0 +1,82 @@
+<!-- Setup Screen -->
+<section class="screen active" data-screen="setup" id="screen-setup">
+  <div class="section-header">
+    <div class="section-title" data-i18n="setup.title">Setup</div>
+    <div class="section-sub" data-i18n="setup.subtitle">Pair your mobile device with this computer to begin.</div>
+  </div>
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><i data-lucide="info" class="ic"></i><span data-i18n="setup.computerStatus">Computer status</span></div>
+      <div id="status-chip" class="badge ok hidden"><span class="dot"></span><span data-i18n="setup.agentRunning">Agent running</span></div>
+    </div>
+    <div class="stat-group three">
+      <div class="stat">
+        <div class="lbl" data-i18n="setup.computerName">Computer name</div>
+        <div class="val" id="status-computer">—</div>
+      </div>
+      <div class="stat">
+        <div class="lbl" data-i18n="setup.pairedDevices">Paired devices</div>
+        <div class="val" id="status-paired">0</div>
+      </div>
+      <div class="stat">
+        <div class="lbl" data-i18n="setup.listeningPort">Listening port</div>
+        <div class="val" id="status-port">47831</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><i data-lucide="link" class="ic"></i><span data-i18n="setup.pairing">Pairing</span></div>
+      <div></div>
+    </div>
+    <div class="pair-grid">
+      <div>
+        <div class="lbl-small" data-i18n="setup.pairingCode">Pairing code — enter on mobile</div>
+        <div id="status-token" class="token-display">—</div>
+        <div class="btn-group mt-3">
+          <button class="btn primary" id="btn-regenerate"><i data-lucide="rotate-ccw" class="ic"></i><span data-i18n="common.regenerate">Regenerate</span></button>
+          <button class="btn" id="btn-copy"><i data-lucide="copy" class="ic"></i><span data-i18n="common.copy">Copy</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="lbl-small" data-i18n="setup.pairingQr">Pairing QR — scan with mobile</div>
+        <div class="qrcode"><div id="qr-img"></div></div>
+        <div id="qr-fallback" class="empty-state hidden">
+          <i data-lucide="qr-code" class="ic"></i>
+          <div data-i18n="setup.qrUnavailable">QR code unavailable</div>
+          <div class="note mt-2" data-i18n="setup.usePairingCodeAbove">Use the pairing code above</div>
+        </div>
+      </div>
+    </div>
+    <div class="manual-row">
+      <span class="lbl-small" data-i18n="common.manualConnection">Manual:</span>
+      <code id="manual-ws" class="ws-endpoint">ws://<ip>:47831/ws</code>
+    </div>
+    <p class="note mt-3" data-i18n="setup.note">Same Wi-Fi network &#8226; code is single-use &#8226; regenerates after each pairing</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><i data-lucide="alert-circle" class="ic"></i><span data-i18n="setup.connectionState">Connection state</span></div>
+      <div></div>
+    </div>
+    <div class="stat-group three">
+      <div class="stat">
+        <div class="lbl" data-i18n="setup.cpu">CPU</div>
+        <div class="val" id="state-agent">—</div>
+        <div class="trend" id="state-agent-trend"></div>
+      </div>
+      <div class="stat">
+        <div class="lbl" data-i18n="setup.memory">Memory</div>
+        <div class="val" id="state-telemetry">—</div>
+        <div class="trend" id="state-telemetry-trend"></div>
+      </div>
+      <div class="stat">
+        <div class="lbl" data-i18n="setup.lastUpdate">Last update</div>
+        <div class="val" id="state-last-update">—</div>
+        <div class="trend"></div>
+      </div>
+    </div>
+  </div>
+</section>

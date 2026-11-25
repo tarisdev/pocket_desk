@@ -1,0 +1,96 @@
+<!-- Settings Screen -->
+<section class="screen" data-screen="settings" id="screen-settings">
+  <div class="section-header">
+    <div class="section-title" data-i18n="settings.title">Settings</div>
+    <div class="section-sub" data-i18n="settings.subtitle">Agent port, telemetry, startup, and appearance.</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="settings" class="ic"></i><span data-i18n="settings.general">General</span></div><div></div></div>
+    <div class="field-row">
+      <div class="field">
+        <label data-i18n="settings.port">Port</label>
+        <input id="set-port" type="number" value="47831" />
+      </div>
+      <div class="field">
+        <label data-i18n="settings.telemetryInterval">Telemetry interval (ms)</label>
+        <input id="set-interval" type="number" value="1000" />
+      </div>
+      <div class="field flex-[0_0_220px] min-w-42.5">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" id="set-boot" /> <span data-i18n="settings.startOnBoot">Start on boot</span>
+        </label>
+      </div>
+      <div class="field flex-[0_0_190px] min-w-37.5">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" id="set-lan" checked /> <span data-i18n="settings.lanOnly">LAN only</span>
+        </label>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button class="btn primary" id="btn-save-settings"><i data-lucide="save" class="ic"></i><span data-i18n="common.save">Save settings</span></button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="palette" class="ic"></i><span data-i18n="settings.appearance">Appearance</span></div><div></div></div>
+    <div class="field">
+      <label data-i18n="settings.theme">Theme</label>
+      <div class="flex gap-2">
+        <button class="btn theme-btn" data-theme="system" id="theme-system" data-i18n="settings.themeSystem">System</button>
+        <button class="btn theme-btn" data-theme="light" id="theme-light" data-i18n="settings.themeLight">Light</button>
+        <button class="btn theme-btn" data-theme="dark" id="theme-dark" data-i18n="settings.themeDark">Dark</button>
+      </div>
+      <p class="note mt-2" data-i18n="settings.themeNote">Matches system preference when set to System.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="wifi" class="ic"></i><span data-i18n="settings.network">Network</span></div><div></div></div>
+    <div class="field-row">
+      <div class="field">
+        <label data-i18n="settings.manualWsEndpoint">Manual WS endpoint</label>
+        <code id="manual-ws-settings" class="ws-endpoint">ws://<ip>:47831/ws</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="shield" class="ic"></i><span data-i18n="settings.security">Security</span></div><div></div></div>
+    <div class="flex items-center justify-between gap-3">
+      <div>
+        <div class="lbl-small" data-i18n="settings.pairingCode">Pairing code</div>
+        <div class="note" data-i18n="settings.regenerateCodeNote">Regenerate the pairing code from the Setup screen to invalidate existing codes.</div>
+      </div>
+      <button class="btn danger" id="btn-regenerate-settings"><i data-lucide="rotate-ccw" class="ic"></i><span data-i18n="settings.regenerateCode">Regenerate code</span></button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="info" class="ic"></i><span data-i18n="settings.about">About</span></div><div></div></div>
+    <div class="stat-group two">
+      <div class="stat">
+        <div class="lbl" data-i18n="settings.application">Application</div>
+        <div class="val" data-i18n="common.application">Pocket Desk</div>
+        <div class="trend" data-i18n="settings.desktopAgent">Desktop agent</div>
+      </div>
+      <div class="stat">
+        <div class="lbl" data-i18n="settings.version">Version</div>
+        <div class="val" id="about-version">0.1.0</div>
+        <div class="trend">@pocket-desk/desktop</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="scroll-text" class="ic"></i><span data-i18n="settings.logs">Logs</span></div><div></div></div>
+    <div id="logs" class="logs-panel">&nbsp;</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i data-lucide="languages" class="ic"></i><span data-i18n="common.language">Language</span></div><div></div></div>
+    <div class="flex gap-2">
+      <button class="btn" id="lang-en" data-lang="en">English</button>
+      <button class="btn" id="lang-vi" data-lang="vi">Tiếng Việt</button>
+    </div>
+  </div>
+</section>

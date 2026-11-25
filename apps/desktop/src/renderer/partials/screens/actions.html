@@ -1,0 +1,53 @@
+<!-- Actions Screen -->
+<section class="screen" data-screen="actions" id="screen-actions">
+  <div class="section-header">
+    <div class="section-title" data-i18n="actions.title">Actions</div>
+    <div class="section-sub" data-i18n="actions.subtitle">Configure and execute approved actions triggered from mobile.</div>
+  </div>
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><i data-lucide="plus" class="ic"></i><span data-i18n="actions.addAction">Add action</span></div>
+      <div></div>
+    </div>
+    <div class="field-row">
+      <div class="field flex-2">
+        <label data-i18n="actions.name">Name</label>
+        <input id="action-name" placeholder="e.g. Open VS Code" data-i18n-placeholder="actions.namePlaceholder" />
+      </div>
+      <div class="field">
+        <label data-i18n="actions.type">Type</label>
+        <select id="action-type">
+          <option value="open_url" data-i18n="actions.typeOpenUrl">Open URL</option>
+          <option value="hotkey" data-i18n="actions.typeHotkey">Hotkey</option>
+          <option value="run_script" data-i18n="actions.typeRunScript">Run script</option>
+        </select>
+      </div>
+      <div class="field flex-2">
+        <label data-i18n="actions.target">Target</label>
+        <input id="action-target" placeholder="URL / shortcut / script" data-i18n-placeholder="actions.targetPlaceholder" />
+      </div>
+      <button class="btn primary" id="btn-add-action"><i data-lucide="plus" class="ic"></i><span data-i18n="common.add">Add</span></button>
+    </div>
+    <p class="note mt-3" data-i18n="actions.openUrlRunsOnDesktop">open_url runs on the desktop. Other action types are configured per-device and executed on pairing approval.</p>
+  </div>
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><i data-lucide="list" class="ic"></i><span data-i18n="actions.configuredActions">Configured actions</span></div>
+      <div></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="w-[26%]" data-i18n="actions.name">Name</th>
+            <th class="w-[16%]" data-i18n="actions.type">Type</th>
+            <th class="w-[34%]" data-i18n="actions.target">Target</th>
+            <th class="w-[12%]" data-i18n="common.status">Status</th>
+            <th class="w-[12%]" data-i18n="common.action">Action</th>
+          </tr>
+        </thead>
+        <tbody id="actions-list"></tbody>
+      </table>
+    </div>
+  </div>
+</section>

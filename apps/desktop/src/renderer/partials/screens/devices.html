@@ -1,0 +1,29 @@
+<!-- Devices Screen -->
+<section class="screen" data-screen="devices" id="screen-devices">
+  <div class="section-header">
+    <div class="section-title" data-i18n="devices.title">Devices</div>
+    <div class="section-sub" data-i18n="devices.subtitle">Paired mobile devices and connection management.</div>
+  </div>
+  <div class="toolbar">
+    <span class="badge info" id="devices-count" data-i18n="devices.count" data-i18n-params='{"count": 0}'>0 devices</span>
+    <button class="btn" id="btn-refresh-devices"><i data-lucide="refresh-cw" class="ic"></i><span data-i18n="common.refresh">Refresh</span></button>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="w-[28%]" data-i18n="devices.device">Device</th>
+            <th class="w-[18%]" data-i18n="devices.ipAddress">IP address</th>
+            <th class="w-[16%]" data-i18n="devices.pairedAt">Paired at</th>
+            <th class="w-[16%]" data-i18n="devices.lastActivity">Last activity</th>
+            <th class="w-[14%]" data-i18n="devices.status">Status</th>
+            <th class="w-[8%]" data-i18n="devices.action">Action</th>
+          </tr>
+        </thead>
+        <tbody id="devices-list"></tbody>
+      </table>
+    </div>
+  </div>
+  <p class="note" data-i18n="devices.pairMobilePhone">Devices appear here after a mobile phone pairs via QR (Setup) or manual WS entry. Revoke to disconnect immediately. Use "Send" to push a message to a paired device.</p>
+</section>

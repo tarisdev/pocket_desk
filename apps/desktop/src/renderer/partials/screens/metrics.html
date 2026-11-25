@@ -1,0 +1,107 @@
+<!-- Metrics Screen -->
+<section class="screen" data-screen="metrics" id="screen-metrics">
+  <div class="section-header">
+    <div class="section-title" data-i18n="metrics.title">Metrics</div>
+    <div class="section-sub" data-i18n="metrics.subtitle">Real-time system telemetry from the desktop agent.</div>
+  </div>
+  <div class="toolbar">
+    <span class="badge ok hidden" id="metrics-live-badge"><span class="dot"></span><span data-i18n="metrics.live">Live</span></span>
+    <span class="badge info" id="metrics-interval" data-i18n="metrics.interval" data-i18n-params='{"interval": "1s"}'>1s interval</span>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card" id="metric-cpu">
+      <div class="metric-header">
+        <div class="metric-icon cpu"><i data-lucide="cpu" class="ic"></i></div>
+        <div class="metric-title">
+          <div class="lbl" data-i18n="metrics.cpu">CPU</div>
+          <div class="val" id="m-cpu">—</div>
+        </div>
+      </div>
+      <div class="metric-bar">
+        <div class="bar-track"><div class="bar-fill" id="cpu-bar" style="width: 0%"></div></div>
+      </div>
+      <svg class="sparkline" id="spark-cpu"></svg>
+      <div class="metric-detail" id="cpu-detail">—</div>
+    </div>
+    <div class="metric-card" id="metric-memory">
+      <div class="metric-header">
+        <div class="metric-icon memory"><i data-lucide="hard-drive" class="ic"></i></div>
+        <div class="metric-title">
+          <div class="lbl" data-i18n="metrics.memory">Memory</div>
+          <div class="val" id="m-mem">—</div>
+        </div>
+      </div>
+      <div class="metric-bar">
+        <div class="bar-track"><div class="bar-fill" id="mem-bar" style="width: 0%"></div></div>
+      </div>
+      <svg class="sparkline" id="spark-mem"></svg>
+      <div class="metric-detail" id="mem-detail">—</div>
+    </div>
+    <div class="metric-card" id="metric-disk">
+      <div class="metric-header">
+        <div class="metric-icon disk"><i data-lucide="database" class="ic"></i></div>
+        <div class="metric-title">
+          <div class="lbl" data-i18n="metrics.disk">Disk</div>
+          <div class="val" id="m-disk">—</div>
+        </div>
+      </div>
+      <div class="metric-bar">
+        <div class="bar-track"><div class="bar-fill" id="disk-bar" style="width: 0%"></div></div>
+      </div>
+      <svg class="sparkline" id="spark-disk"></svg>
+      <div class="metric-detail" id="disk-detail">—</div>
+    </div>
+    <div class="metric-card" id="metric-network">
+      <div class="metric-header">
+        <div class="metric-icon network"><i data-lucide="activity" class="ic"></i></div>
+        <div class="metric-title">
+          <div class="lbl" data-i18n="metrics.network">Network</div>
+          <div class="val" id="m-net">—</div>
+        </div>
+      </div>
+      <div class="metric-bar dual">
+        <div class="bar-track">
+          <div class="bar-fill up" id="net-up-bar" style="width: 0%"></div>
+          <div class="bar-fill down" id="net-down-bar" style="width: 0%"></div>
+        </div>
+      </div>
+      <svg class="sparkline" id="spark-net"></svg>
+      <div class="metric-detail" id="net-detail">—</div>
+    </div>
+    <div class="metric-card" id="metric-battery">
+      <div class="metric-header">
+        <div class="metric-icon battery"><i data-lucide="battery" class="ic"></i></div>
+        <div class="metric-title">
+          <div class="lbl" data-i18n="metrics.battery">Battery</div>
+          <div class="val" id="m-batt">—</div>
+        </div>
+      </div>
+      <div class="metric-bar">
+        <div class="bar-track"><div class="bar-fill" id="batt-bar" style="width: 0%"></div></div>
+      </div>
+      <svg class="sparkline" id="spark-batt"></svg>
+      <div class="metric-detail" id="batt-detail">—</div>
+    </div>
+  </div>
+  <div class="card" id="metrics-detail">
+    <div class="card-head"><div class="card-title"><i data-lucide="list" class="ic"></i><span data-i18n="metrics.details">Details</span></div><div></div></div>
+    <div class="stat-group four">
+      <div class="stat"><div class="lbl" data-i18n="metrics.cpuCores">CPU cores</div><div class="val" id="m-cpu-cores">—</div></div>
+      <div class="stat"><div class="lbl" data-i18n="metrics.memoryDetail">Memory</div><div class="val" id="m-mem-detail">—</div></div>
+      <div class="stat"><div class="lbl" data-i18n="metrics.diskUsage">Disk usage</div><div class="val" id="m-disk-pct">—</div></div>
+      <div class="stat"><div class="lbl" data-i18n="metrics.charging">Charging</div><div class="val" id="m-charging">—</div></div>
+    </div>
+    <div class="stat-group four">
+      <div class="stat"><div class="lbl" data-i18n="metrics.upload">Upload</div><div class="val" id="m-up">—</div></div>
+      <div class="stat"><div class="lbl" data-i18n="metrics.download">Download</div><div class="val" id="m-down">—</div></div>
+      <div class="stat"><div class="lbl" data-i18n="metrics.loadAvgLabel">Load avg</div><div class="val" id="m-load">—</div></div>
+      <div class="stat"><div class="lbl" data-i18n="metrics.uptime">Uptime</div><div class="val" id="m-uptime">—</div></div>
+    </div>
+    <p class="note" data-i18n="metrics.telemetryPublished">Telemetry is published every second to paired devices.</p>
+  </div>
+  <div id="metrics-empty" class="empty-state hidden">
+    <i data-lucide="wifi-off" class="ic"></i>
+    <div class="font-semibold mt-2" data-i18n="metrics.noTelemetry">No telemetry</div>
+    <div class="note mt-2" data-i18n="metrics.pairMobileDevice">Pair a mobile device to begin receiving telemetry.</div>
+  </div>
+</section>

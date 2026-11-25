@@ -1,9 +1,40 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Vite plugin: inlines HTML partials referenced by
+ * `<!-- @include "partials/xxx.html" -->` comments into index.html.
+ * Works in both dev (Vite dev server) and build (vite build) modes.
+ */
+function htmlPartialsPlugin() {
+  return {
+    name: 'html-partials',
+    transformIndexHtml(html) {
+      return html.replace(
+        /<!--\s*@include\s+"([^"]+)"\s*-->/g,
+        (_match, partialPath) => {
+          const fullPath = path.resolve(
+            __dirname,
+            'src',
+            'renderer',
+            partialPath
+          );
+          try {
+            return fs.readFileSync(fullPath, 'utf8');
+          } catch {
+            console.warn(`[html-partials] Partial not found: ${partialPath}`);
+            return _match;
+          }
+        }
+      );
+    },
+  };
+}
 
 // Renderer dev server + production build for the Electron app.
 //
@@ -28,7 +59,7 @@ export default defineConfig({
     outDir: path.resolve(__dirname, 'dist', 'renderer'),
     emptyOutDir: true,
   },
-  plugins: [tailwindcss()],
+  plugins: [htmlPartialsPlugin(), tailwindcss()],
   resolve: {
     alias: {
       '@utils': path.resolve(__dirname, 'src/renderer/utils'),
