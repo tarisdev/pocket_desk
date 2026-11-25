@@ -37,14 +37,12 @@ const state: AppState = {
 };
 state.themeIdx = loadTheme();
 
-// Apply a specific theme index and persist it.
 function setTheme(idx: number): void {
   state.themeIdx = idx;
   saveTheme(idx);
   applyTheme(idx);
 }
 
-// Apply translations to static elements
 function applyTranslations(): void {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
@@ -81,22 +79,19 @@ function applyTranslations(): void {
   });
 }
 
-// Update dynamic content that needs translation
+// Dynamic strings are not covered by data-i18n, so they are re-resolved on every language change.
 function updateDynamicTranslations(): void {
-  // Update connection status
   const connectionText = $('connection-text');
   if (connectionText) {
     const stateKey = `status.${state.connectionState}` as const;
     connectionText.textContent = t(stateKey);
   }
 
-  // Update screen title and subtitle
   const titleEl = $('topbar-title') as HTMLElement | null;
   const subEl = $('topbar-sub') as HTMLElement | null;
   if (titleEl) titleEl.textContent = t(`nav.${state.currentScreen}`);
   if (subEl) subEl.textContent = t(`${state.currentScreen}.subtitle`);
 
-  // Update devices count
   const devicesCount = $('devices-count');
   if (devicesCount && state.devices?.length !== undefined) {
     devicesCount.textContent = t('devices.count', {
@@ -104,7 +99,6 @@ function updateDynamicTranslations(): void {
     });
   }
 
-  // Update metrics interval
   const metricsInterval = $('metrics-interval');
   if (metricsInterval) {
     const interval = state.settings?.telemetryInterval ?? 1000;
@@ -121,7 +115,6 @@ function onLanguageChange(lng: string): void {
   applyTranslations();
   updateDynamicTranslations();
 
-  // Re-render current screen
   if (screens[state.currentScreen]?.render) {
     screens[state.currentScreen].render!();
   }
@@ -242,7 +235,6 @@ screens.settings = {
   },
 };
 
-// Setup screen event listeners
 const desktop: DesktopAPI | undefined = window.desktop;
 if (!desktop) {
   document.body.insertAdjacentHTML(
@@ -250,12 +242,10 @@ if (!desktop) {
     `<div class="p-6 text-error-text bg-error-bg border border-error-border rounded max-w-150 mx-auto mb-8" data-i18n="common.error">Preload bridge not available (window.desktop missing). Check Electron preload path and contextIsolation.</div>`
   );
 } else {
-  // Load initial screens
   loadSetupScreen(desktop);
   loadDevicesScreen(desktop);
   loadSettingsScreen(state.settings);
 
-  // Setup screen event listeners
   setupSetupScreenEventListeners(
     desktop,
     () => loadDevicesScreen(desktop),
@@ -275,6 +265,7 @@ if (!desktop) {
 }
 
 // Navigation
+// Navigation
 document.querySelectorAll('.navitem').forEach((el) => {
   el.addEventListener('click', () =>
     nav((el as HTMLElement).dataset.screen || '')
@@ -285,7 +276,6 @@ $('btn-theme')?.addEventListener('click', () => {
   state.themeIdx = cycleTheme(state.themeIdx);
 });
 
-// Language selector
 $('btn-language')?.addEventListener('click', async () => {
   const current = i18n.getLanguage();
   await i18n.changeLanguage(current === 'en' ? 'vi' : 'en');
@@ -361,7 +351,6 @@ if (desktop) {
   });
 }
 
-// Boot
 async function boot(): Promise<void> {
   try {
     await initI18n();
@@ -372,7 +361,7 @@ async function boot(): Promise<void> {
     setupThemeListener();
     nav('setup');
 
-    // Periodic UI refresh for connection state when no telemetry
+    // Keep connection stats and the metrics view fresh even when telemetry is idle.
     setInterval(() => {
       renderSystemStats();
       if (state.currentScreen === 'metrics')

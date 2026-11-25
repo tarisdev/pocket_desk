@@ -57,7 +57,6 @@ export function renderMetricsScreen(
     }
   };
 
-  // CPU
   setText('m-cpu', `${cpuPct.toFixed(1)}%`);
   updateCard('metric-cpu', cpuPct, statusColor(cpuPct));
 
@@ -66,13 +65,11 @@ export function renderMetricsScreen(
     `${metrics?.cpu?.loadAvg?.toFixed(2) ?? '—'} ${t('metrics.loadAvg')}`
   );
 
-  // Memory
   setText('m-mem', `${memPct.toFixed(1)}%`);
   updateCard('metric-memory', memPct, statusColor(memPct));
 
   setText('mem-detail', `${formatBytes(memUsed)} / ${formatBytes(memTotal)}`);
 
-  // Disk
   setText('m-disk', `${diskPct.toFixed(1)}%`);
   updateCard('metric-disk', diskPct, statusColor(diskPct));
 
@@ -83,7 +80,6 @@ export function renderMetricsScreen(
     `${diskCount} ${t('common.drive')}${diskCount !== 1 ? 's' : ''}`
   );
 
-  // Network
   const upPct = Math.min(100, (netUp / 1024 / 1024) * 20);
   const downPct = Math.min(100, (netDown / 1024 / 1024) * 20);
 
@@ -96,7 +92,6 @@ export function renderMetricsScreen(
 
   setText('net-detail', `${t('metrics.total')}: ${humanBytes(netTotal)}`);
 
-  // Battery
   const battColor = battPct < 20 ? statusColor(battPct) : '#a855f7';
 
   setText('m-batt', `${Math.round(battPct)}% ${battCharging ? '⚡' : ''}`);
@@ -108,7 +103,7 @@ export function renderMetricsScreen(
     battCharging ? t('metrics.charging') : t('common.onBattery')
   );
 
-  // Push history only when telemetry exists
+  // Only record history once real telemetry has arrived, otherwise the sparklines would fill with zeros.
   if (hasTelemetry) {
     pushHistory(metricsHistory, 'cpu', cpuPct);
     pushHistory(metricsHistory, 'memory', memPct);
@@ -117,7 +112,6 @@ export function renderMetricsScreen(
     pushHistory(metricsHistory, 'battery', battPct);
   }
 
-  // Details panel
   setText('m-cpu-cores', metrics?.cpu?.cores ?? '—');
 
   setText(
@@ -142,7 +136,6 @@ export function renderMetricsScreen(
 
   setText('m-uptime', formatUptime());
 
-  // State indicators
   setText(
     'state-telemetry',
     hasTelemetry ? t('common.streaming') : t('common.idle')
@@ -169,7 +162,6 @@ export function renderMetricsScreen(
     })
   );
 
-  // Empty state
   const empty = $('metrics-empty');
   const detail = $('metrics-detail');
 

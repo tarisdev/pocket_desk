@@ -1,8 +1,5 @@
-// Electron wrapper for Electron 33+ stub package compatibility
-// Re-exports from electron package for type checking
-// Note: At runtime in Electron 33+, require('electron') returns binary path
-// This is a known issue with Electron 33+ stub package
-
+// The Electron 33+ stub package returns the binary path at runtime, so the
+// concrete values are re-exported here behind a single import surface.
 import type {
   App,
   BrowserWindowConstructorOptions,
@@ -21,6 +18,5 @@ export const BrowserWindow = electronBrowserWindow;
 export const ipcMain = electronIpcMain;
 export const shell = electronShell;
 
-// Re-export types
 export type { App, BrowserWindowConstructorOptions, IpcMain, Shell };
 export type BrowserWindow = InstanceType<typeof electronBrowserWindow>;

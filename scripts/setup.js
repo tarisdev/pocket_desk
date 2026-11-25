@@ -32,7 +32,6 @@ function main() {
   for (const ws of workspaces) {
     const dir = path.join(root, ws.replace(/\/\*$/, ''));
     if (!fs.existsSync(dir)) {
-      // glob workspace
       continue;
     }
   }

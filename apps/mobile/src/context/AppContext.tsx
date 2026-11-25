@@ -71,13 +71,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const endpointRef = useRef(DEFAULT_ENDPOINT);
   const tokenRef = useRef('');
 
-  // Connection state
   const [status, setStatus] = useState<Status>('disconnected');
   const [computerName, setComputerName] = useState<string | null>(null);
   const [latency, setLatency] = useState<number | null>(null);
   const [lastSync, setLastSync] = useState<string | null>(null);
 
-  // Telemetry
   const [cpu, setCpu] = useState<number | null>(null);
   const [ram, setRam] = useState<number | null>(null);
   const [disk, setDisk] = useState<number | null>(null);
@@ -86,19 +84,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [battery, setBattery] = useState<number | null>(null);
   const [charging, setCharging] = useState<boolean | null>(null);
 
-  // Settings
   const [keepAwake, setKeepAwake] = useState(true);
   const [refreshRate, setRefreshRate] = useState(1000);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>(
     'portrait'
   );
 
-  // Widgets
   const [widgets, setWidgetsState] = useState<string[]>(DEFAULT_WIDGETS);
   const [visible, setVisible] =
     useState<Record<string, boolean>>(DEFAULT_VISIBLE);
 
-  // Theme
   const theme = useThemeName();
   const toggleTheme = useThemeToggle();
   const setTheme = useThemeSet();
@@ -141,26 +136,22 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // Load persisted widgets
   useEffect(() => {
     loadWidgets().then((v) => {
       if (v) setWidgetsState(v);
     });
   }, []);
 
-  // Persist widgets
   useEffect(() => {
     saveWidgets(widgets);
   }, [widgets]);
 
-  // Load persisted theme
   useEffect(() => {
     loadTheme().then((v) => {
       if (v) setTheme(v);
     });
   }, [setTheme]);
 
-  // Persist theme
   useEffect(() => {
     saveTheme(theme);
   }, [theme]);

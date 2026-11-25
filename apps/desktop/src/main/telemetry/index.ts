@@ -111,6 +111,7 @@ export class TelemetryCollector {
         battery: batt.hasBattery
           ? { percent: batt.percent, charging: batt.isCharging }
           : null,
+        // GPU and temperature sensors are not collected yet; advertised as unsupported.
         capabilities: { gpu: false, temperatures: false },
       };
 

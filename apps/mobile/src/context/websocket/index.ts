@@ -183,6 +183,7 @@ export class WebSocketManager {
     this.ws = null;
     if (!this.manualDisconnect) {
       this.callbacks.onStatusChange('disconnected');
+      // Exponential backoff (capped at 30s) with jitter to avoid reconnect storms.
       const delay = Math.min(1000 * Math.pow(2, this.retry), 30000);
       this.retry++;
       this.reconnectTimeout = setTimeout(
