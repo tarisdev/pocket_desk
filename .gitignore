@@ -1,0 +1,129 @@
+# ---------------------------------------------------------------------------
+# Pocket Desk - .gitignore
+# Monorepo (npm workspaces): apps/* (Expo/React Native, Electron/Vite),
+# packages/* (TypeScript). Patterns use **/ so they apply in every workspace.
+# ---------------------------------------------------------------------------
+
+# --- Agent (local tooling / notes) ---
+agent/
+
+# --- Dependencies ---
+node_modules/
+**/node_modules/
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml/
+.yarn/install-state.gz/
+.pnp.*
+.pnpm-store/
+
+# --- Build / dist outputs ---
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+release/
+**/release/
+.vite/
+**/.vite/
+*.tsbuildinfo
+**/*.tsbuildinfo
+
+# --- Expo / React Native ---
+.expo/
+**/.expo/
+.expo-shared/
+**/web-build/
+**/android/
+**/ios/
+.metro/
+**/.metro/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+junk/
+**/.expo/
+expo-env.d.ts
+
+# --- Electron ---
+**/dist
+*.asar
+
+# --- Test / coverage ---
+coverage/
+**/coverage/
+.nyc_output/
+**/.nyc_output/
+*.lcov
+
+# --- Logs ---
+logs/
+**/logs/
+*.log
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# --- Environment / secrets ---
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+!.env.*.example
+!**/.env.*.example
+
+# --- Cache / temp ---
+.cache/
+**/.cache/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+*.rej
+*.pid
+*.seed
+*.pid.lock
+
+# --- IDE / editor (personal settings) ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.history/
+*.iml
+
+# --- OS files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# --- Misc tooling ---
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.prettiercache
+.turbo/
+.parcel-cache/
+.swc/

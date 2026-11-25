@@ -1,0 +1,29 @@
+{
+  "name": "Pocket Desk",
+  "slug": "pocketdesk",
+  "version": "0.1.0",
+  "orientation": "default",
+  "entryPoint": "./app.tsx",
+  "plugins": [
+    [
+      "expo-camera",
+      {
+        "cameraPermission": "Cho phép Pocket Desk truy cập camera để quét mã QR ghép nối."
+      }
+    ]
+  ],
+  "ios": {
+    "supportsTablet": true
+  },
+  "android": {
+    "package": "com.pocketdesk.app",
+    "versionCode": 1,
+    "permissions": [
+      "CAMERA",
+      "INTERNET",
+      "ACCESS_NETWORK_STATE",
+      "WAKE_LOCK",
+      "FOREGROUND_SERVICE"
+    ]
+  }
+}

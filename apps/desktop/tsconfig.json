@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node"],
+    "noEmit": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@main/*": ["./src/main/*"],
+      "@renderer/*": ["./src/renderer/*"],
+      "@utils/*": ["./src/renderer/utils/*"],
+      "@screens/*": ["./src/renderer/screens/*"],
+      "@state/*": ["./src/renderer/state/*"],
+      "@i18n/*": ["./src/renderer/i18n/*"]
+    }
+  },
+  "include": ["src/main.ts", "src/main/**/*", "src/preload.cjs"],
+  "exclude": ["src/renderer"]
+}

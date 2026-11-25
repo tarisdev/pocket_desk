@@ -1,0 +1,27 @@
+{
+  "name": "pocket-desk",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:mobile": "npm --workspace apps/mobile run start",
+    "dev:desktop": "npm --workspace apps/desktop run dev",
+    "build:mobile": "npm --workspace apps/mobile run build",
+    "build:desktop": "npm --workspace apps/desktop run build",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
+    "setup": "node scripts/setup.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.10.1"
+  },
+  "dependencies": {
+    "tsconfig-paths": "^4.2.0"
+  }
+}

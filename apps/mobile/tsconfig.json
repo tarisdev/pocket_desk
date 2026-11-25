@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["react", "react-native"],
+    "noUncheckedIndexedAccess": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@theme": ["./src/theme/index"],
+      "@theme/*": ["./src/theme/*"],
+      "@components": ["./src/components/index"],
+      "@components/*": ["./src/components/*"],
+      "@context": ["./src/context/index"],
+      "@context/*": ["./src/context/*"],
+      "@design": ["./src/design/index"],
+      "@design/*": ["./src/design/*"],
+      "@screens": ["./src/screens/index"],
+      "@screens/*": ["./src/screens/*"],
+      "@navigator": ["./src/navigator/index"],
+      "@navigator/*": ["./src/navigator/*"],
+      "@hooks": ["./src/hooks"],
+      "@i18n": ["./src/i18n/index"]
+    }
+  },
+  "include": ["app.tsx", "src/**/*"]
+}
